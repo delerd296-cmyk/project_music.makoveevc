@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Учим музыку - Главная</title>
+</head>
+<body>
+<link rel="stylesheet" href="style.css">>
+    <h1>Просто о музыке</h1>
+
+    <div>
+        <a href="index.html">Главная</a>
+        <a href="theory.html">Теория</a>
+        <a href="instruments.html">Инструменты</a>
+        <a href="practice.html">Практика</a>
+    </div>
+
+    <div>
+        <h2>Хочешь понимать музыку?</h2>
+        <p>Я научу. Без заумных слов. Просто делай шаг за шагом.</p>
+        <button onclick="alert('Начни с теории. Жми в меню - Теория')">С чего начать</button>
+    </div>
+
+    <div>
+        <h3>Что тут есть</h3>
+        <ul>
+            <li><strong>Теория</strong> - ноты и ритм простыми словами</li>
+            <li><strong>Инструменты</strong> - гитара, пианино или пение</li>
+            <li><strong>Практика</strong> - как заниматься каждый день</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>А ты новичок?</h3>
+        <button onclick="document.getElementById('sovet').innerHTML='Начни с хлопков в ладоши под любимую песню. Просто слушай и хлопай.'">Да, я ничего не умею</button>
+        <button onclick="document.getElementById('sovet').innerHTML='Уже что-то слышишь? Попробуй подобрать мелодию из рекламы.'">Что-то умею</button>
+        <p id="sovet"></p>
+    </div>
+
+    <div>
+        <h3>Напиши мне</h3>
+        <p>Я обычный человек, учусь музыке сам. Спрашивай что угодно.</p>
+        
+        <label>Твоё имя</label>
+        <input type="text" id="userName" placeholder="Твоё имя">
+        
+        <label>Твой вопрос</label>
+        <textarea rows="3" id="userMsg" placeholder="Твой вопрос"></textarea>
+        
+        <button onclick="sendMyMessage()">Отправить</button>
+        <p id="msgResult"></p>
+    </div>
+
+    <div>
+        <h3>Мои контакты</h3>
+        <p>Email: mafia@music.ru</p>
+        <p>Телефон: +7 999 123-45-67</p>
+        <p>Telegram: @mafia_music</p>
+    </div>
+
+    <script>
+        function sendMyMessage() {
+            let name = document.getElementById('userName').value;
+            let msg = document.getElementById('userMsg').value;
+            if (name == "" || msg == "") {
+                alert("Напиши имя и вопрос");
+            } else {
+                document.getElementById('msgResult').innerHTML = "Спасибо, " + name + "! Я отвечу через пару дней. Не бросай музыку!";
+                document.getElementById('userName').value = "";
+                document.getElementById('userMsg').value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>

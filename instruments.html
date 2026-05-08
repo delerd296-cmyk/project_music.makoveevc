@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Музыкальные инструменты</title>
+</head>
+<body>
+<link rel="stylesheet" href="style.css">
+    <h1>На чём играть</h1>
+
+    <div>
+        <a href="index.html">Главная</a>
+        <a href="theory.html">Теория</a>
+        <a href="instruments.html">Инструменты</a>
+        <a href="practice.html">Практика</a>
+    </div>
+
+    <div>
+        <button onclick="showInst('guitar')">Гитара</button>
+        <button onclick="showInst('piano')">Пианино</button>
+        <button onclick="showInst('voice')">Вокал</button>
+    </div>
+
+    <div id="guitar">
+        <h3>Гитара</h3>
+        <img src="/home/user/Рабочий стол/Маковеев_УП 01/sources/image/гитара.png">
+        <p>Сначала болят пальцы. Это нормально, пройдёт за неделю.</p>
+        <p><strong>Твои первые аккорды:</strong> Am, C, G</p>
+        <p>Их достаточно для сотни песен.</p>
+    </div>
+
+    <div id="piano" style="display: none;">
+        <h3>Пианино</h3>
+        <img src="/home/user/Рабочий стол/Маковеев_УП 01/sources/image/пианино.jpg">
+        <p>Белые клавиши - это ноты. Чёрные - между ними.</p>
+        <p><strong>Как найти ноту ДО:</strong> Найди две чёрные клавиши. Слева от них - ДО.</p>
+        <p>Попробуй сыграть все белые подряд - это гамма.</p>
+    </div>
+
+    <div id="voice" style="display: none;">
+        <h3>Вокал (пение)</h3>
+        <img src="/home/user/Рабочий стол/Маковеев_УП 01/sources/image/рот.jpeg">
+        <p>Твой голос - это бесплатный инструмент. Он всегда с тобой.</p>
+        <p><strong>Упражнение:</strong> Дуй как на свечку - ровно и спокойно. Так тренируется дыхание.</p>
+        <p>Пей тёплую воду перед пением.</p>
+    </div>
+
+    <div>
+        <h3>Что выбрать новичку</h3>
+        <p>Гитара - от 3000 рублей, можно брать с собой</p>
+        <p>Пианино - от 15000 рублей, но ноты видно сразу</p>
+        <p>Вокал - 0 рублей, всегда с тобой</p>
+    </div>
+
+    <script>
+        function showInst(name) {
+            document.getElementById('guitar').style.display = 'none';
+            document.getElementById('piano').style.display = 'none';
+            document.getElementById('voice').style.display = 'none';
+            document.getElementById(name).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

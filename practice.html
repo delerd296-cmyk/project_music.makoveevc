@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика музыки</title>
+</head>
+<body>
+<link rel="stylesheet" href="style.css">
+    <h1>Как заниматься и не бросить</h1>
+
+    <div>
+        <a href="index.html">Главная</a>
+        <a href="theory.html">Теория</a>
+        <a href="instruments.html">Инструменты</a>
+        <a href="practice.html">Практика</a>
+    </div>
+
+    <div>
+        <h3>Расписание на 30 минут</h3>
+        <p>0-5 мин - разминка пальцев</p>
+        <p>5-15 мин - гаммы и упражнения</p>
+        <p>15-25 мин - играй любимую песню</p>
+        <p>25-30 мин - просто дурачься (импровизация)</p>
+        <p><strong>Главное:</strong> лучше 10 минут каждый день, чем 3 часа раз в неделю.</p>
+    </div>
+
+    <div>
+        <h3>Простые упражнения</h3>
+        <ul>
+            <li>Включи метроном (скачай в телефоне) и хлопай в такт</li>
+            <li>Запиши себя на диктофон - послушай и найди ошибки</li>
+            <li>Спой одну ноту, потом найди её на инструменте</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Трекер занятий</h3>
+        <p>Ставь галочку, если сегодня занимался</p>
+        <div id="tracker"></div>
+        <button onclick="saveTrack()">Сохранить</button>
+        <button onclick="clearTrack()">Сбросить</button>
+        <p id="trackMsg"></p>
+    </div>
+
+    <div>
+        <h3>3 ошибки новичка</h3>
+        <p>1. Бросить после недели - Продержись 21 день, потом войдёт в привычку.</p>
+        <p>2. Заниматься без перерыва часами - Лучше по 15 минут каждый день.</p>
+        <p>3. Бояться ошибиться - Даже звёзды фальшивят. Ошибки - это нормально.</p>
+    </div>
+
+    <div>
+        <h3>Мотивация</h3>
+        <p>Если будешь играть по 15 минут в день - через месяц сыграешь свою первую песню. Я сам так начал.</p>
+    </div>
+
+    <script>
+        const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+        
+        function loadTrack() {
+            let saved = localStorage.getItem('musicTrack');
+            let checks = saved ? JSON.parse(saved) : [false, false, false, false, false, false, false];
+            let html = '';
+            for (let i = 0; i < days.length; i++) {
+                html += '<div style="display:inline-block; margin:5px; text-align:center;">' + days[i] + '<br><input type="checkbox" id="day' + i + '" ' + (checks[i] ? 'checked' : '') + '></div>';
+            }
+            document.getElementById('tracker').innerHTML = html;
+        }
+        
+        function saveTrack() {
+            let newChecks = [];
+            for (let i = 0; i < days.length; i++) {
+                let cb = document.getElementById('day' + i);
+                newChecks.push(cb ? cb.checked : false);
+            }
+            localStorage.setItem('musicTrack', JSON.stringify(newChecks));
+            document.getElementById('trackMsg').innerHTML = 'Сохранено. Ты молодец.';
+            setTimeout(() => document.getElementById('trackMsg').innerHTML = '', 2000);
+        }
+        
+        function clearTrack() {
+            localStorage.removeItem('musicTrack');
+            loadTrack();
+            document.getElementById('trackMsg').innerHTML = 'Всё сброшено. Начинай сначала.';
+        }
+        
+        loadTrack();
+    </script>
+
+</body>
+</html>
